@@ -8,6 +8,7 @@ from pages.dashboard_page import DashboardPage
 from pages.our_courses_page import OurCourses
 from pages.post_plus2_courses_page import PostPlusTwo
 from pages.placement_partner_page import PlacementPartner
+from pages.successful_stories_page import SuccessfulStories
 from pages.blogs_page import Blogs
 from pages.contact_us_page import ContactUs
 from pages.admission_page import Admission
@@ -42,7 +43,8 @@ def test_dashboard(driver):
     time.sleep(1)
     dashboard_page.click_submit() #click_submit() method to submit the form
     time.sleep(2)
-    print("The Dashboard has been tested succesfully!!")
+
+    print("The Dashboard has been tested successfully!!")
 
 
 def test_ourcourses(driver):
@@ -50,11 +52,15 @@ def test_ourcourses(driver):
     our_courses.open_page("https://www.mindrisers.com.np/courses")
     driver.maximize_window()
     time.sleep(1)
+    our_courses.scroll_window()
+    time.sleep(1)
     our_courses.enter_searchbar("QA")
     time.sleep(1)
-    our_courses.search_courses()
+    our_courses.search()
     time.sleep(3)
     # our_courses.search_course()
+
+    print("Our Courses Page has been tested successfully!!")
 
 
 def test_postplus2(driver):
@@ -62,26 +68,49 @@ def test_postplus2(driver):
     post_plus.open_page("https://www.mindrisers.com.np/after+2-courses")
     driver.maximize_window()
     time.sleep(1)
+    post_plus.scroll_window()
+    time.sleep(1)
 
 
 def test_placement_partner(driver):
-    our_courses = PlacementPartner(driver)
-    our_courses.open_page("https://www.mindrisers.com.np/placement-partner")
+    placement = PlacementPartner(driver)
+    placement.open_page("https://www.mindrisers.com.np/placement-partner")
     driver.maximize_window()
     time.sleep(1)
+    placement.scroll_window()
+    time.sleep(2)
 
+    print("Placement Partner Page has been tested successfully!!")
+
+def test_successful_stories(driver):
+    stories = SuccessfulStories(driver)
+    stories.open_page("https://www.mindrisers.com.np/success-gallery")
+    driver.maximize_window()
+    time.sleep(1)
+    stories.scroll_window()
+    time.sleep(2)
+
+    print("Successful Stories Page has been tested successfully!!")
 
 def test_blogs(driver):
     blogs = Blogs(driver)
     blogs.open_page("https://www.mindrisers.com.np/blogs")
     driver.maximize_window()
+    blogs.scroll_window()
     time.sleep(2)
+
+    print("Blogs Page has been tested successfully!!")
+
 
 def test_contactus(driver):
     contact_us = ContactUs(driver)
     contact_us.open_page("https://www.mindrisers.com.np/contact-us")
     driver.maximize_window()
-    time.sleep(2)
+    time.sleep(1)
+    contact_us.scroll_window()
+    time.sleep(1)
+
+    print("Contact Us Page has been tested successfully!!")
 
 def test_admission(driver):
     admission = Admission(driver)
@@ -104,3 +133,5 @@ def test_admission(driver):
     time.sleep(1)
     admission.enter_queries("This is a test for admission")
     time.sleep(1)
+
+    print("Admission Page has been tested successfully!!")
