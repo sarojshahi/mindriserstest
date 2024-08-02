@@ -6,8 +6,10 @@ import time
 class OurCourses:
     def __init__(self,driver):
         self.driver = driver
-        self.search_field = By.XPATH,"//input[@name='searchTerm']"
-        self.search_button = By.XPATH,"//button[@class='btn-simple']"
+        self.search_field = (By.XPATH,"//input[@name='searchTerm']")
+        self.search_button = (By.XPATH,"//button[@class='btn-simple']")
+        self.searched_link = By.XPATH,"//a[contains(@href,'/courses/quality-assurance-training-in-nepal')]//div[contains(@class,'z-10 inline-block transition group-hover:bg-green-50 group-hover:text-primary')]//span[@class='transition-all group-hover:mr-2'][normalize-space()='Learn More']"
+
 
     def open_page(self,url):
         self.driver.get(url)
@@ -24,7 +26,11 @@ class OurCourses:
             current_y += scroll_distance
             time.sleep(2)
 
-    def enter_searchbar(self,course):
+    def enter_searchbar(self, course):
         self.driver.find_element(*self.search_field).send_keys(course)
-    def search(self):
+
+    def click_search(self):
         self.driver.find_element(*self.search_button).click()
+
+    def click_searched_course(self):
+        self.driver.find_element(*self.searched_link).click()
